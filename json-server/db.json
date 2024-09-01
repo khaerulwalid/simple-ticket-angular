@@ -1,0 +1,32 @@
+{
+  "tickets": [
+    {
+      "id": "1",
+      "title": "Example Ticket",
+      "description": "This is an example ticket.",
+      "status": "open",
+      "userId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@gmail.com",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "id": "2",
+      "name": "Admin User",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "1ac1",
+      "emailId": "admin@gmail.com",
+      "password": "admin"
+    }
+  ]
+}
