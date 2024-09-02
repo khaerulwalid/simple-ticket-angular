@@ -10,7 +10,8 @@ export class MasterService {
   constructor(private http: HttpClient) { }
 
   login(obj: UserCredentials) {
-    debugger;
-    return this.http.post<LoginResponse>(this.apiUrl + "users", obj);
+    console.log(obj, "<<Obj");
+    
+    return this.http.post<LoginResponse>(this.apiUrl + "login", obj);
   }
 }

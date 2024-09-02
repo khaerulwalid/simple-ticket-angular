@@ -3,6 +3,7 @@ import { LoginResponse, UserCredentials } from '../../models/user-credentials.in
 import { FormsModule } from '@angular/forms';
 import { MasterService } from '../../services/master.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginObj: UserCredentials = {
-    "emailId": "",
+    "email": "",
     "password": ""
   }
 
@@ -21,15 +22,23 @@ export class LoginComponent {
   router = inject(Router);
 
   onLogin() {
-    this.masterSrv.login(this.loginObj).subscribe((res: LoginResponse) => {
+    this.masterSrv.login(this.loginObj).subscribe(
+      (res: LoginResponse) => {
       console.log(res, "<<Response");
-      if(res.role === "admin") {
-        localStorage.setItem('name', JSON.stringify(res.name));
-        localStorage.setItem('role', JSON.stringify(res.role));
+      if(res.access_token) {
+        localStorage.setItem('access_token', JSON.stringify(res.access_token));
         this.router.navigateByUrl('dashboard');
-      } else {
-        alert("Gagal Login");
       }
-    })
+    },
+    (error: HttpErrorResponse) => {
+      if (error.status === 401) {
+        console.log("User or Password salah");
+        alert("Invalid Email or password");
+      } else {
+        console.error("An unexpected error occurred:", error);
+        alert("An unexpected error occurred. Please try again later.");
+      }
+    }
+  );
   }
 }

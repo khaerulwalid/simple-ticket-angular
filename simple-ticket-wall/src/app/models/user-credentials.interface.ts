@@ -1,12 +1,8 @@
 export interface UserCredentials {
-    emailId: string;
+    email: string;
     password: string;
   }
 
   export interface LoginResponse {
-    id: string,
-    name: string,
-    email: string,
-    password: string,
-    role: string
+    access_token: string
   }
