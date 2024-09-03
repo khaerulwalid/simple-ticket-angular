@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DonorService } from '../../services/donor.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recipient-card',
@@ -22,10 +23,16 @@ export class RecipientCardComponent {
     
     this.donorService.postDonors(recipientId).subscribe(
       (res) => {
-        this.router.navigate(['/recipientdonor']);
+        alert('Anda sudah daftar donor');
+        this.router.navigate(['/dashboard']);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.error.message,
+          footer: '<a href="#">Why do I have this issue?</a>'
+        });
       }
     )
   }

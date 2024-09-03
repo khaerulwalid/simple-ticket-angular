@@ -72,4 +72,22 @@ export interface UserCredentials {
     User: User;
     Donors: DonorRecipient[];
   }
+
+
+export interface MyRecipient {
+  id: number;
+  UserId: number;
+  stock: number;
+  location: string;
+  image: string | null;
+  latitude: string;
+  longitude: string;
+  bloodType: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  User: User;
+  Donors: DonorRecipient[];
+}
+
   

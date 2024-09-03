@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponse, UserCredentials, UserRegistration } from '../models/user-credentials.interface';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MasterService {
-  apiUrl: string = "http://localhost:3000/";
+  apiUrl: string = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   login(obj: UserCredentials) {    

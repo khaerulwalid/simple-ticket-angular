@@ -1,6 +1,14 @@
-<div class="dashboard">
+<div class="dashboard p-4">
+    <div class="mt-4 w-80">
+        <a [routerLink]="['/requestblood']">
+            <button 
+            class="w-1/2 bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+            Request Blood
+            </button>
+        </a>
+      </div>
     <h2 class="text-2xl font-bold text-center mb-4">Recipient Donor</h2>
-  
+    
     <div *ngIf="recipients.length > 0; else noData">
         <div class="flex flex-row justify-center flex-wrap gap-4">
             <div *ngFor="let recipient of recipients">

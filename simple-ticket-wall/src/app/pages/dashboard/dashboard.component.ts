@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { DonorCardComponent } from '../donor-card/donor-card.component';
 import { CommonModule } from '@angular/common';
 import { Donor } from '../../models/user-credentials.interface';
@@ -13,18 +13,30 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-  donors: Donor[] = [];
+  private _donors = signal<Donor[]>([]);
+  error = signal<string | null>(null);
 
   constructor(private donorService: DonorService){}
 
   ngOnInit(): void {
-      this.donorService.getDonors().subscribe(
-        (data: Donor[]) => {
-          this.donors = data;
-        },
-        (error: HttpErrorResponse) => {
-          console.error('Error fetching donors:', error);
-        }
-      )
+    this.fetchDonors();
+  }
+
+  get donors(): Donor[] {
+    return this._donors();
+  }
+
+  fetchDonors(): void {
+    this.donorService.getDonors().subscribe(
+      (data: Donor[]) => {
+        
+        this._donors.set(data);
+        this.error.set(null);
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error fetching donors:', error);
+        this.error.set("Error Fetching donors")
+      }
+    )
   }
 }

@@ -1,0 +1,30 @@
+<div class="max-w-sm w-80 mx-auto mt-10 p-4 bg-white border border-gray-200 rounded-lg shadow-lg">
+    <div class="text-lg font-bold text-gray-900 mb-4">Donor Request</div>
+    
+    <div class="mb-4">
+      <div class="text-lg font-semibold text-blue-500 mb-2">Blood Type: <span class="text-gray-700">{{ myRecipient.bloodType }}</span></div>
+      <div class="text-md text-gray-800 mb-2">Stock: <span class="font-bold">{{ myRecipient.stock }}</span></div>
+      <div class="text-md text-gray-800 mb-2">Location: <span class="font-bold">{{ myRecipient.location }}</span></div>
+      <div class="text-md text-gray-600 mb-2">Description: <span class="italic">{{ myRecipient.description }}</span></div>
+    </div>
+    
+    <div class="border-t border-gray-200 pt-2 mt-4 text-sm text-gray-600">
+      <div>Posted by: <span class="font-semibold">{{ myRecipient.User.name }}</span></div>
+      <div>Posted on: <span class="font-semibold">{{ myRecipient.createdAt | date }}</span></div>
+    </div>
+
+    <button 
+        (click)="onEdit()"
+        class="mt-4 w-full bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600"
+    >
+        Edit
+    </button>
+
+    <button 
+        (click)="onDelete()"
+        class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-800"
+    >
+        Delete
+    </button>
+  </div>
+  

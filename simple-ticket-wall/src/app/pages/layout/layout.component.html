@@ -1,7 +1,7 @@
 <nav class="bg-blue-500 p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="#" class="text-white font-bold text-xl">
-        MyLogo
+      <a href="#" class="text-red-800 font-bold text-xl">
+        DonorLink
       </a>
       <ul class="flex space-x-4">
         <li>
@@ -11,7 +11,7 @@
           <a [routerLink]="['/recipientdonor']" class="text-white hover:text-gray-300">Recipient</a>
         </li>
         <li>
-          <a href="#" class="text-white hover:text-gray-300">Services</a>
+          <a [routerLink]="['/myrecipientblood']" class="text-white hover:text-gray-300">My Request</a>
         </li>
         <li>
           <a href="#" class=" bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none" (click)="logout()">Logout</a>
