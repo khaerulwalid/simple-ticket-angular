@@ -8,17 +8,13 @@ export const authGuard: CanActivateFn = (
     const router = inject(Router);
     const token = localStorage.getItem('access_token');
 
-    console.log('Navigating to:', state.url);
-    console.log('Token:', token);
 
-    if(!token && state.url !== '/login') {
-        console.log('Redirecting to /login');
+    if(!token && (state.url !== '/login' && state.url !== '/register')) {
         router.navigate(['/login']);
         return false;
     }
 
-    if(state.url === '/login' && token) {
-        console.log('Redirecting to /dashboard');
+    if((state.url === '/login' || state.url === '/register') && token) {
         router.navigate(['/dashboard']);
         return false;
     }

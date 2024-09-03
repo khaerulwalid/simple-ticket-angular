@@ -1,0 +1,16 @@
+<div class="dashboard">
+    <h2 class="text-2xl font-bold text-center mb-4">Recipient Donor</h2>
+  
+    <div *ngIf="recipients.length > 0; else noData">
+        <div class="flex flex-row justify-center flex-wrap gap-4">
+            <div *ngFor="let recipient of recipients">
+                    <app-recipient-card [recipient]="recipient"></app-recipient-card>
+            </div>
+        </div>
+    </div>
+  
+    <ng-template #noData>
+      <p class="text-center text-gray-600">Tidak ada data recipient yang tersedia.</p>
+    </ng-template>
+  </div>
+  

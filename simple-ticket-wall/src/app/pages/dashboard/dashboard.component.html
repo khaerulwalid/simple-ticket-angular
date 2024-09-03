@@ -1,1 +1,16 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+    <h2 class="text-2xl font-bold text-center mb-4">My Donor</h2>
+  
+    <div *ngIf="donors.length > 0; else noData">
+        <div class="flex flex-row justify-center gap-4">
+            <div *ngFor="let donor of donors">
+                    <app-donor-card [donor]="donor"></app-donor-card>
+            </div>
+        </div>
+    </div>
+  
+    <ng-template #noData>
+      <p class="text-center text-gray-600">Tidak ada data donor yang tersedia.</p>
+    </ng-template>
+  </div>
+  
